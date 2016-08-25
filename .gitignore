@@ -17,6 +17,8 @@
 /logs/*
 !/logs/empty
 
+config/app.php
+
 # CakePHP 2
 
 /app/tmp/*

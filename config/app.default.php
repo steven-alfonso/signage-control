@@ -230,7 +230,7 @@ return [
              */
             //'port' => 'non_standard_port_number',
             'username' => 'signage-backend',
-            'password' => 'ARarbBsPYhJd6j5H',
+            'password' => 'password',
             'database' => 'signage',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
@@ -270,7 +270,7 @@ return [
             'host' => 'localhost',
             //'port' => 'non_standard_port_number',
             'username' => 'signage-backend',
-            'password' => 'ARarbBsPYhJd6j5H',
+            'password' => 'password',
             'database' => 'signage-test',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
