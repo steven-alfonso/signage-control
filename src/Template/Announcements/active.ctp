@@ -1,14 +1,21 @@
 <ul id="slides">
-    <li class="slide showing">1</li>
-    <li class="slide">2</li>
-    <li class="slide">3</li>
-    <li class="slide">4</li>
+    <?php foreach($announcements as $key => $announcement): ?>
+        <li class="slide <?= $key == 0 ? 'showing' : '' ?>">
+            <h1><?= $announcement->title ?></h1>
+            <h3><?= $announcement->subtitle ?></h3>
+            <?php if($announcement->event): ?>
+                <h4><?= $announcement->event_location ?> <?= $announcement->event_start ?> to <?= $announcement->event_end ?></h4>
+            <?php endif; ?>
+            <h5><?= $announcement->description ?></h5>
+            <img src="<?= $announcement->image_url ?>" />
+        </li>
+    <?php endforeach; ?>
 </ul>
 
 <script>
     var slides = document.querySelectorAll('#slides .slide');
     var currentSlide = 0;
-    var interval = 2000;
+    var interval = 5000;
     var slideInterval = setInterval(nextSlide, interval);
 
     function nextSlide() {
@@ -24,9 +31,14 @@
     these make the slideshow work
 */
 
+img {
+    width:300px;
+    height:auto;
+}
+
 #slides {
     position: relative;
-    height: 300px;
+    height: 100%;
     padding: 0px;
     margin: 0px;
     list-style-type: none;

@@ -11,6 +11,11 @@ use \DateTime;
 */
 class AnnouncementsController extends AppController
 {
+
+    public function initialize() {
+        parent::initialize();
+        $this->Auth->allow(['active']);
+    }
     
     public function isAuthorized($user) {
         $action = $this->request->params['action'];
@@ -60,7 +65,7 @@ class AnnouncementsController extends AppController
     }
     
     public function active($locationId = null) {
-         $this->viewBuilder()->layout('blank');
+        $this->viewBuilder()->layout('blank');
         $now = new DateTime('now');
         $query = $this->Announcements->find('all')->where([
             'Announcements.start <=' => $now,
@@ -68,7 +73,6 @@ class AnnouncementsController extends AppController
         ]);
         $results = $query->all();
         $announcements = $results->toArray();
-        // debug($announcements);
         $this->set('announcements', $announcements);
         $this->set('_serialize', ['announcements']);
     }
