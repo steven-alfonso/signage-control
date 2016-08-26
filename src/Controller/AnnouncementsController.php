@@ -21,13 +21,15 @@ class AnnouncementsController extends AppController
         $action = $this->request->params['action'];
         if(in_array($action, ['index', 'view', 'active'])){
             return true;
+        } else if(in_array($action, ['add'])) {
+            return $user['approved'];
         }
         
         if(empty($this->request->params['pass'][0])) {
             return false;
         }
         
-        return $user['approved'];
+        return parent::isAuthorized($user);
     }
     
     /**
@@ -65,6 +67,8 @@ class AnnouncementsController extends AppController
     }
     
     public function active($locationId = null) {
+        
+            debug($user);
         $this->viewBuilder()->layout('blank');
         $now = new DateTime('now');
         $query = $this->Announcements->find('all')->where([
@@ -86,18 +90,19 @@ class AnnouncementsController extends AppController
     {
         $announcement = $this->Announcements->newEntity();
         if ($this->request->is('post')) {
+            // echo ($this->request->data);
+            $this->Flash->success($this->request->data);
+            $userId = $this->Auth->user('id');
             $announcement = $this->Announcements->patchEntity($announcement, $this->request->data);
             if ($this->Announcements->save($announcement)) {
                 $this->Flash->success(__('The announcement has been saved.'));
-                
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The announcement could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Announcements->Users->find('list', ['limit' => 200]);
         $announcementTypes = $this->Announcements->AnnouncementTypes->find('list', ['limit' => 200]);
-        $this->set(compact('announcement', 'users', 'announcementTypes'));
+        $this->set(compact('announcement', 'announcementTypes'));
         $this->set('_serialize', ['announcement']);
     }
     

@@ -10,11 +10,15 @@ use Cake\ORM\Entity;
  * @property int $user_id
  * @property string $title
  * @property string $subtitle
- * @property string $text
+ * @property string $description
  * @property string $image_url
- * @property int $announcement_type_id
  * @property \Cake\I18n\Time $start
  * @property \Cake\I18n\Time $end
+ * @property int $announcement_type_id
+ * @property bool $event
+ * @property string $event_location
+ * @property \Cake\I18n\Time $event_start
+ * @property \Cake\I18n\Time $event_end
  * @property \Cake\I18n\Time $created
  *
  * @property \App\Model\Entity\User $user

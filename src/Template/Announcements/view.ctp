@@ -28,7 +28,11 @@
         </tr>
         <tr>
             <th><?= __('Announcement Type') ?></th>
-            <td><?= $announcement->has('announcement_type') ? $this->Html->link($announcement->announcement_type->name, ['controller' => 'AnnouncementTypes', 'action' => 'view', $announcement->announcement_type->]) : '' ?></td>
+            <td><?= $announcement->has('announcement_type') ? $this->Html->link($announcement->announcement_type->name, ['controller' => 'AnnouncementTypes', 'action' => 'view', $announcement->announcement_type->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Event Location') ?></th>
+            <td><?= h($announcement->event_location) ?></td>
         </tr>
         <tr>
             <th><?= __('Id') ?></th>
@@ -43,13 +47,25 @@
             <td><?= h($announcement->end) ?></td>
         </tr>
         <tr>
+            <th><?= __('Event Start') ?></th>
+            <td><?= h($announcement->event_start) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Event End') ?></th>
+            <td><?= h($announcement->event_end) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Created') ?></th>
             <td><?= h($announcement->created) ?></td>
         </tr>
+        <tr>
+            <th><?= __('Event') ?></th>
+            <td><?= $announcement->event ? __('Yes') : __('No'); ?></td>
+        </tr>
     </table>
     <div class="row">
-        <h4><?= __('Text') ?></h4>
-        <?= $this->Text->autoParagraph(h($announcement->text)); ?>
+        <h4><?= __('Description') ?></h4>
+        <?= $this->Text->autoParagraph(h($announcement->description)); ?>
     </div>
     <div class="row">
         <h4><?= __('Image Url') ?></h4>

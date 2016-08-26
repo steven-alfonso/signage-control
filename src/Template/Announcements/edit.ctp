@@ -22,11 +22,15 @@
             echo $this->Form->input('user_id', ['options' => $users]);
             echo $this->Form->input('title');
             echo $this->Form->input('subtitle');
-            echo $this->Form->input('text');
+            echo $this->Form->input('description');
             echo $this->Form->input('image_url');
-            echo $this->Form->input('announcement_type_id', ['options' => $announcementTypes]);
             echo $this->Form->input('start');
             echo $this->Form->input('end');
+            echo $this->Form->input('announcement_type_id', ['options' => $announcementTypes]);
+            echo $this->Form->input('event');
+            echo $this->Form->input('event_location');
+            echo $this->Form->input('event_start', ['empty' => true]);
+            echo $this->Form->input('event_end', ['empty' => true]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

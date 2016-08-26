@@ -71,8 +71,8 @@ class AnnouncementsTable extends Table
             ->allowEmpty('subtitle');
 
         $validator
-            ->requirePresence('text', 'create')
-            ->notEmpty('text');
+            ->requirePresence('description', 'create')
+            ->notEmpty('description');
 
         $validator
             ->allowEmpty('image_url');
@@ -86,6 +86,22 @@ class AnnouncementsTable extends Table
             ->dateTime('end')
             ->requirePresence('end', 'create')
             ->notEmpty('end');
+
+        $validator
+            ->boolean('event')
+            ->requirePresence('event', 'create')
+            ->notEmpty('event');
+
+        $validator
+            ->allowEmpty('event_location');
+
+        $validator
+            ->dateTime('event_start')
+            ->allowEmpty('event_start');
+
+        $validator
+            ->dateTime('event_end')
+            ->allowEmpty('event_end');
 
         return $validator;
     }

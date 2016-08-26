@@ -17,9 +17,13 @@
                 <th><?= $this->Paginator->sort('user_id') ?></th>
                 <th><?= $this->Paginator->sort('title') ?></th>
                 <th><?= $this->Paginator->sort('subtitle') ?></th>
-                <th><?= $this->Paginator->sort('announcement_type_id') ?></th>
                 <th><?= $this->Paginator->sort('start') ?></th>
                 <th><?= $this->Paginator->sort('end') ?></th>
+                <th><?= $this->Paginator->sort('announcement_type_id') ?></th>
+                <th><?= $this->Paginator->sort('event') ?></th>
+                <th><?= $this->Paginator->sort('event_location') ?></th>
+                <th><?= $this->Paginator->sort('event_start') ?></th>
+                <th><?= $this->Paginator->sort('event_end') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -31,9 +35,13 @@
                 <td><?= $announcement->has('user') ? $this->Html->link($announcement->user->id, ['controller' => 'Users', 'action' => 'view', $announcement->user->id]) : '' ?></td>
                 <td><?= h($announcement->title) ?></td>
                 <td><?= h($announcement->subtitle) ?></td>
-                <td><?= $announcement->has('announcement_type') ? $this->Html->link($announcement->announcement_type->name, ['controller' => 'AnnouncementTypes', 'action' => 'view', $announcement->announcement_type]) : '' ?></td>
                 <td><?= h($announcement->start) ?></td>
                 <td><?= h($announcement->end) ?></td>
+                <td><?= $announcement->has('announcement_type') ? $this->Html->link($announcement->announcement_type->name, ['controller' => 'AnnouncementTypes', 'action' => 'view', $announcement->announcement_type->id]) : '' ?></td>
+                <td><?= h($announcement->event) ?></td>
+                <td><?= h($announcement->event_location) ?></td>
+                <td><?= h($announcement->event_start) ?></td>
+                <td><?= h($announcement->event_end) ?></td>
                 <td><?= h($announcement->created) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $announcement->id]) ?>
